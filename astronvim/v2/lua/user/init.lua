@@ -1,8 +1,7 @@
 return {
-  -- Neovim-опции
   opt = {
     number         = true,
-    relativenumber = true,
+    relativenumber = false,
     -- Добавляем ваши новые настройки здесь
     swapfile       = false,
     scrolloff      = 7,
@@ -12,7 +11,6 @@ return {
     ignorecase     = true,     -- игнорировать регистр при поиске
     smartcase      = true,     -- учитывать регистр если есть заглавные буквы
   },
-  
   -- Глобальные переменные для gruvbox
   g = {
     gruvbox_contrast_dark    = "soft",
