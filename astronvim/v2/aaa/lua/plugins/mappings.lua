@@ -9,7 +9,7 @@ return {
         },
         ["<Leader>4"] = {
           function()
-            vim.cmd('TermExec cmd="/usr/local/go/bin/go test ./..."')
+            vim.cmd('TermExec cmd="go test ./..."')
           end,
           desc = "Run Go tests",
         },
