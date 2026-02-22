@@ -4,5 +4,4 @@ set -e
 
 mkdir -p ~/.config
 
-ln -s ~/golang/for_oneself/astronvim/v2 ~/.config/nvim
-
+ln -sfn "$HOME/golang/for_oneself/astronvim/v2" "$HOME/.config/nvim"
