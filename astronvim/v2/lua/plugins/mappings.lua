@@ -13,6 +13,12 @@ return {
           end,
           desc = "Run Go tests",
         },
+        ["5"] = {
+          function()
+            vim.cmd("write")
+          end,
+          desc = "Save file",
+        },
       },
     },
   },
