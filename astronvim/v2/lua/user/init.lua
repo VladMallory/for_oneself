@@ -1,33 +1,39 @@
 return {
   opt = {
-    number         = true,
+    number = true,
     relativenumber = false,
-    -- Добавляем ваши новые настройки здесь
-    swapfile       = false,
-    scrolloff      = 7,
-    -- Можно добавить и другие полезные настройки
-    cursorline     = true,     -- подсветка текущей строки
-    wrap           = false,    -- отключить перенос строк
-    ignorecase     = true,     -- игнорировать регистр при поиске
-    smartcase      = true,     -- учитывать регистр если есть заглавные буквы
+    swapfile = false,
+    scrolloff = 7,
+    cursorline = true,
+    wrap = false,
+    ignorecase = true,
+    smartcase = true,
   },
-  -- Глобальные переменные для gruvbox
+
   g = {
-    gruvbox_contrast_dark    = "soft",
-    gruvbox_italic_comments  = true,
-    -- Здесь можно добавить другие глобальные переменные
+    gruvbox_contrast_dark = "soft",
+    gruvbox_italic_comments = true,
   },
-  
-  -- Указываем, какую тему хотим по-умолчанию
+
   colorscheme = "gruvbox",
-  
-  -- polish-функция выполняется ПОСЛЕ загрузки всех плагинов
+
   polish = function()
-    -- Устанавливаем gruvbox как активную тему
     vim.cmd("colorscheme gruvbox")
-    
-    -- Здесь можно добавить дополнительные настройки,
-    -- которые должны выполняться после загрузки плагинов
-    -- Например, кастомные автокоманды или маппинги
+
+    vim.keymap.set("n", "<leader>5", function()
+      local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+      local offset = vim.fn.line2byte(row) + col
+      local file = vim.fn.expand("%:p")
+
+      local cmd = "iferr -pos " .. offset .. " < " .. file
+      local output = vim.fn.system(cmd)
+
+      if vim.v.shell_error ~= 0 then
+        print("iferr failed")
+        return
+      end
+
+      vim.api.nvim_put(vim.split(output, "\n"), "l", true, true)
+    end, { desc = "Generate if err block" })
   end,
 }
