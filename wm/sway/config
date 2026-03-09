@@ -1,0 +1,131 @@
+### variables
+
+set $mod Mod4
+set $term alacritty
+set $menu rofi -show drun -show-icons -modi drun,run,window,favorites:~/.config/rofi/favorites.sh
+
+
+#
+exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+### environment
+exec_always dbus-update-activation-environment --systemd GTK_THEME=Yaru-dark
+exec_always dbus-update-activation-environment --systemd MOZ_ENABLE_WAYLAND=1
+exec_always dbus-update-activation-environment --systemd QT_QPA_PLATFORM=wayland
+exec_always dbus-update-activation-environment --systemd SDL_VIDEODRIVER=wayland
+
+### keyboard layout
+
+input * {
+    xkb_layout us,ru
+    xkb_options grp:alt_space_toggle
+}
+
+input type:touchpad {
+    natural_scroll enabled
+    tap enabled
+}
+
+# bindsym $mod+f layout toggle tabbed stacking splitv splith
+bindsym $mod+f layout toggle tabbed split
+
+### Скриншоты
+
+bindsym Print exec grimshot copy area
+bindsym Shift+Print exec grimshot copy screen
+bindsym Ctrl+Print exec grimshot copy active
+
+### terminal
+
+bindsym $mod+Return exec $term
+
+### launcher
+
+bindsym --to-code $mod+d exec $menu
+
+### close window
+
+bindsym --to-code $mod+q kill
+
+### reload config
+
+bindsym $mod+Shift+c reload
+
+### exit sway
+
+bindsym $mod+Shift+e exec "swaymsg exit"
+
+### focus movement
+
+bindsym --to-code $mod+h focus left
+bindsym --to-code $mod+j focus down
+bindsym --to-code $mod+k focus up
+bindsym --to-code $mod+l focus right
+
+### move windows
+
+bindsym --to-code $mod+Shift+h move left
+bindsym --to-code $mod+Shift+j move down
+bindsym --to-code $mod+Shift+k move up
+bindsym --to-code $mod+Shift+l move right
+
+### workspaces
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+
+### volume
+
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+### brightness
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+### screenshot
+
+# bindsym Print exec grim -g "$(slurp)" - | wl-copy
+
+### autostart
+
+exec_always waybar
+exec_always nm-applet --no-agent
+exec_always mako
+exec_always xembedsniproxy
+exec_always blueman-applet
+
+### background
+
+output * bg "/home/pc/Изображения/Город.jpg" fill
+
+
+# Цвета
+# Gruvbox window borders
+# client.focused          #d65d0e #d65d0e #ebdbb2 #d65d0e #d65d0e
+client.focused          #3c3836 #3c3836 #a89984 #3c3836 #3c3836
+client.focused_inactive #3c3836 #3c3836 #a89984 #3c3836 #3c3836
+client.unfocused        #282828 #282828 #928374 #282828 #282828
+client.urgent           #cc241d #cc241d #fbf1c7 #cc241d #cc241d
+client.placeholder      #282828 #282828 #928374 #282828 #282828
+
+
+# Автозапуск
+exec_always swaymsg "workspace 2; exec brave-browser"
+exec_always swaymsg "workspace 4; exec happ"
+
+
+# Горячие клавиши
+bindsym --to-code $mod+t exec flatpak run org.telegram.desktop
+bindsym --to-code $mod+b exec flatpak run com.brave.Browser
