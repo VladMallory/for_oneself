@@ -1,1 +1,4 @@
-xargs -a flatpak-apps.txt -I{} flatpak install -y flathub {}
+# Установка на новом пк
+```bash
+xargs -a flathub.txt -I{} flatpak install -y flathub {}
+```
