@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
-
-mkdir -p ~/.config
-
-ln -sfn "$HOME/golang/for_oneself/astronvim/v2" "$HOME/.config/nvim"
+git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
+# remove template's git connection to set up your own later
+rm -rf ~/.config/nvim/.git
+nvim
