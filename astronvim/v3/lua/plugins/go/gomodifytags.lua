@@ -4,6 +4,14 @@ return {
   {
     "simondrake/gomodifytags",
     ft = "go",
+    keys = {
+      {
+        "<leader>6",
+        function() require("gomodifytags").GoAddTags "json" end,
+        ft = "go",
+        desc = "Add JSON struct tags",
+      },
+    },
     init = function()
       if vim.fn.executable "gomodifytags" == 0 and vim.fn.isdirectory(go_bin) == 1 then
         vim.env.PATH = go_bin .. ":" .. vim.env.PATH
