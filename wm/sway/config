@@ -1,6 +1,6 @@
 ### variables
 
-set $mod Mod4
+set $mod Mod1
 set $term alacritty
 set $menu rofi -show drun -show-icons -modi drun,run,window,favorites:~/.config/rofi/favorites.sh
 
@@ -26,7 +26,6 @@ input type:touchpad {
     tap enabled
 }
 
-# bindsym $mod+f layout toggle tabbed stacking splitv splith
 bindsym --to-code $mod+f layout toggle tabbed split
 
 ### Скриншоты
@@ -87,6 +86,7 @@ bindsym $mod+Shift+6 move container to workspace 6
 
 ### volume
 
+bindsym --to-code $mod+p exec pavucontrol
 bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
@@ -103,15 +103,27 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 ### autostart
 
 exec_always waybar
+exec_always /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 exec_always nm-applet --no-agent
 exec_always mako
 exec_always xembedsniproxy
+# exec_always env XEMBEDDNOPROXY=1 xembedsniproxy
+# exec_always xembedsniproxy >/dev/null 2>&1
 exec_always blueman-applet
+# exec_always polybar main
 
 ### background
 
 output * bg "/home/pc/Изображения/Город.jpg" fill
 
+for_window [class="xembedsniproxy"] floating enable
+for_window [class="xembedsniproxy"] move position -200 -200
+
+for_window [class="Polybar"] floating enable
+for_window [class="Polybar"] sticky enable
+for_window [class="Polybar"] border none
+for_window [class="Polybar"] move position 0 0
+for_window [class="Polybar"] inhibit_idle fullscreen
 
 # Цвета
 # Gruvbox window borders
@@ -125,7 +137,7 @@ client.placeholder      #282828 #282828 #928374 #282828 #282828
 
 # Автозапуск
 exec_always swaymsg "workspace 2; exec brave-browser"
-exec_always swaymsg "workspace 4; exec happ"
+# exec_always swaymsg "workspace 4; exec happ"
 
 
 # Горячие клавиши
