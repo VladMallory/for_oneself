@@ -12,6 +12,7 @@ return {
           breakindent = true,
           breakindentopt = "shift:0,sbr",
           showbreak = "↪  ",
+          wildignore = "*.DS_Store",
         },
       },
     },
