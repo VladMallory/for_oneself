@@ -45,7 +45,7 @@
             "btrfs": [],
             "flags": [],
             "fs_type": "ext4",
-            "size": { "sector_size": { "value": 512, "unit": "B" }, "unit": "Percent", "value": 100 },
+            "size": { "sector_size": { "value": 512, "unit": "B" }, "unit": "MiB", "value": 450000 },
             "mount_options": [],
             "mountpoint": "/",
             "start": { "sector_size": { "value": 512, "unit": "B" }, "unit": "GiB", "value": 21 },
