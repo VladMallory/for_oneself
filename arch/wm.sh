@@ -23,7 +23,4 @@ mkdir -p ~/.config/waybar
 cp "$REPO/wm/waybar/config" ~/.config/waybar/config
 cp "$REPO/wm/waybar/style.css" ~/.config/waybar/style.css
 
-echo "=== Grimshot (AUR) ==="
-yay -S --needed --noconfirm grimshot
-
 echo "Sway и Waybar установлены и настроены"
