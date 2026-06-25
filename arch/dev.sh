@@ -8,10 +8,10 @@ REPO="$(dirname "$DIR")"
 echo "=== Go ==="
 sudo pacman -S --needed --noconfirm go
 
-echo "=== Rust (rustup через зеркало USTC) ==="
+echo "=== Rust (rustup через зеркало Tsinghua) ==="
 if ! command -v rustup &> /dev/null; then
-    export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+    export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+    export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
 
