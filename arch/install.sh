@@ -4,8 +4,8 @@ set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-echo "=== Обновление системы ==="
-sudo pacman -Syu --noconfirm
+echo "=== Установка base-devel (нужно для сборки AUR) ==="
+sudo pacman -Syu --noconfirm --needed base-devel
 
 echo "=== Установка yay (AUR helper) ==="
 if ! command -v yay &> /dev/null; then

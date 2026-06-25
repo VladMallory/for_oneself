@@ -20,11 +20,11 @@ echo "=== Make ==="
 sudo pacman -S --needed --noconfirm make
 
 echo "=== Lazygit ==="
-go install github.com/jesseduffield/lazygit@latest
+go install -v github.com/jesseduffield/lazygit@latest
 
 echo "=== Инструменты Go ==="
-go install mvdan.cc/gofumpt@latest
-go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+go install -v mvdan.cc/gofumpt@latest
+go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 echo "=== Настройка Docker ==="
 sudo systemctl enable --now docker.service
