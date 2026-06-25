@@ -1,9 +1,10 @@
 #!/bin/bash
 
-set -e
-
 echo "=== 1. Подключение репозитория Flathub ==="
-flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+if ! flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo 2>/dev/null; then
+    echo "Flathub недоступен (возможно блокировка в РФ). Всё остальное уже установлено."
+    exit 0
+fi
 
 echo "=== 2. Установка Flatpak приложений ==="
 apps=(
