@@ -5,7 +5,7 @@ set -e
 echo "=== Системные пакеты ==="
 sudo pacman -S --needed --noconfirm \
     btop fastfetch ffmpeg rsync tree wget unzip firefox \
-    thunar qalculate-gtk baobab qbittorrent
+    thunar qalculate-gtk baobab qbittorrent flatpak
 
 echo "=== AUR пакеты ==="
 if ! command -v flclash &> /dev/null; then
