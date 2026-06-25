@@ -10,8 +10,8 @@ sudo pacman -S --needed --noconfirm \
     sway waybar rofi \
     mako grim slurp \
     pipewire wireplumber pavucontrol brightnessctl \
-    networkmanager NetworkManager-applet blueman xorg-xwayland \
-    polkit-kde-agent xembedsniproxy \
+    networkmanager network-manager-applet blueman xorg-xwayland \
+    polkit-kde-agent \
     ttf-jetbrains-mono-nerd
 
 echo "=== Копирование конфига Sway ==="
