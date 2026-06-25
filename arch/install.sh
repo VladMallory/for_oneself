@@ -9,10 +9,11 @@ sudo pacman -Syu --noconfirm --needed base-devel
 
 echo "=== Установка yay (AUR helper) ==="
 if ! command -v yay &> /dev/null; then
+    sudo pacman -S --noconfirm go
     cd /tmp
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd yay-bin
-    makepkg -si --noconfirm
+    git clone --depth 1 https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm --skippgpcheck
     cd "$DIR"
 fi
 
