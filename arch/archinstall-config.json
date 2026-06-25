@@ -1,0 +1,98 @@
+{
+  "archinstall-language": "English",
+  "audio_config": {
+    "audio": "pipewire"
+  },
+  "bootloader_config": {
+    "bootloader": "Grub",
+    "uki": false,
+    "removable": false
+  },
+  "debug": false,
+  "disk_config": {
+    "config_type": "default_layout",
+    "device_modifications": [
+      {
+        "device": "/dev/sda",
+        "partitions": [
+          {
+            "btrfs": [],
+            "flags": ["boot"],
+            "fs_type": "fat32",
+            "size": { "unit": "MiB", "value": 1024 },
+            "mount_options": [],
+            "mountpoint": "/boot",
+            "start": { "unit": "MiB", "value": 1 },
+            "status": "create",
+            "type": "primary"
+          },
+          {
+            "btrfs": [],
+            "flags": ["swap"],
+            "fs_type": "swap",
+            "size": { "unit": "GiB", "value": 20 },
+            "mount_options": [],
+            "mountpoint": null,
+            "start": { "unit": "MiB", "value": 1025 },
+            "status": "create",
+            "type": "primary"
+          },
+          {
+            "btrfs": [],
+            "flags": [],
+            "fs_type": "ext4",
+            "size": { "unit": "Percent", "value": 100 },
+            "mount_options": [],
+            "mountpoint": "/",
+            "start": { "unit": "GiB", "value": 21 },
+            "status": "create",
+            "type": "primary"
+          }
+        ],
+        "wipe": true
+      }
+    ]
+  },
+  "hostname": "arch-pc",
+  "kernels": ["linux"],
+  "locale_config": {
+    "kb_layout": "us",
+    "sys_enc": "UTF-8",
+    "sys_lang": "ru_RU"
+  },
+  "mirror_config": {
+    "mirror_regions": {
+      "Russia": []
+    },
+    "optional_repositories": ["multilib"]
+  },
+  "network_config": {
+    "type": "nm"
+  },
+  "no_pkg_lookups": false,
+  "ntp": true,
+  "offline": false,
+  "packages": [
+    "bluez",
+    "bluez-utils",
+    "cups",
+    "cups-pdf",
+    "print-manager",
+    "system-config-printer"
+  ],
+  "pacman_config": {
+    "color": true,
+    "parallel_downloads": 10
+  },
+  "profile_config": {
+    "profile": {
+      "details": [],
+      "main": "Sway"
+    }
+  },
+  "script": "guided",
+  "silent": false,
+  "swap": false,
+  "timezone": "Asia/Vladivostok",
+  "version": "2.8.6"
+}
