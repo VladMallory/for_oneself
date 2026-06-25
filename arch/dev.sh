@@ -8,10 +8,23 @@ REPO="$(dirname "$DIR")"
 echo "=== Go ==="
 sudo pacman -S --needed --noconfirm go
 
-echo "=== Rust (rustup) ==="
+echo "=== Rust (rustup через зеркало USTC) ==="
 if ! command -v rustup &> /dev/null; then
+    export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
+
+echo "=== Кэш для cargo ==="
+mkdir -p ~/.cargo
+cat >> ~/.cargo/config.toml << 'EOF'
+
+[source.crates-io]
+replace-with = "tuna"
+
+[source.tuna]
+registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
+EOF
 
 echo "=== Docker и Compose ==="
 sudo pacman -S --needed --noconfirm docker docker-compose
