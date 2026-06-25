@@ -31,7 +31,7 @@
           {
             "btrfs": [],
             "flags": ["swap"],
-            "fs_type": "swap",
+            "fs_type": "linux-swap",
             "size": { "sector_size": { "value": 512, "unit": "B" }, "unit": "GiB", "value": 20 },
             "mount_options": [],
             "mountpoint": null,
