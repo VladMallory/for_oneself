@@ -19,10 +19,10 @@
             "btrfs": [],
             "flags": ["boot"],
             "fs_type": "fat32",
-            "size": { "unit": "MiB", "value": 1024 },
+            "size": { "sector_size": null, "unit": "MiB", "value": 1024 },
             "mount_options": [],
             "mountpoint": "/boot",
-            "start": { "unit": "MiB", "value": 1 },
+            "start": { "sector_size": null, "unit": "MiB", "value": 1 },
             "status": "create",
             "type": "primary"
           },
@@ -30,10 +30,10 @@
             "btrfs": [],
             "flags": ["swap"],
             "fs_type": "swap",
-            "size": { "unit": "GiB", "value": 20 },
+            "size": { "sector_size": null, "unit": "GiB", "value": 20 },
             "mount_options": [],
             "mountpoint": null,
-            "start": { "unit": "MiB", "value": 1025 },
+            "start": { "sector_size": null, "unit": "MiB", "value": 1025 },
             "status": "create",
             "type": "primary"
           },
@@ -41,10 +41,10 @@
             "btrfs": [],
             "flags": [],
             "fs_type": "ext4",
-            "size": { "unit": "Percent", "value": 100 },
+            "size": { "sector_size": null, "unit": "Percent", "value": 100 },
             "mount_options": [],
             "mountpoint": "/",
-            "start": { "unit": "GiB", "value": 21 },
+            "start": { "sector_size": null, "unit": "GiB", "value": 21 },
             "status": "create",
             "type": "primary"
           }
