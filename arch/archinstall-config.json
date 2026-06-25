@@ -24,7 +24,8 @@
             "mountpoint": "/boot",
             "start": { "sector_size": { "value": 512, "unit": "B" }, "unit": "MiB", "value": 1 },
             "status": "create",
-            "type": "primary"
+            "type": "primary",
+            "dev_path": null
           },
           {
             "btrfs": [],
@@ -35,7 +36,8 @@
             "mountpoint": null,
             "start": { "sector_size": { "value": 512, "unit": "B" }, "unit": "MiB", "value": 1025 },
             "status": "create",
-            "type": "primary"
+            "type": "primary",
+            "dev_path": null
           },
           {
             "btrfs": [],
@@ -46,7 +48,8 @@
             "mountpoint": "/",
             "start": { "sector_size": { "value": 512, "unit": "B" }, "unit": "GiB", "value": 21 },
             "status": "create",
-            "type": "primary"
+            "type": "primary",
+            "dev_path": null
           }
         ],
         "wipe": true
