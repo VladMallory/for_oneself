@@ -1,10 +1,10 @@
 {
-  "users": [
+  "!users": [
     {
       "sudo": true,
       "username": "pc",
-      "password": "1"
+      "!password": "1"
     }
   ],
-  "root_password": "1"
+  "!root-password": "1"
 }
