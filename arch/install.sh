@@ -19,7 +19,7 @@ fi
 echo "=== Запуск всех скриптов в $DIR ==="
 for script in "$DIR"/*.sh; do
     name="$(basename "$script")"
-    [[ "$name" == "install.sh" ]] && continue
+    [[ "$name" == "install.sh" || "$name" == "gen-config.sh" ]] && continue
     echo "--- Выполняется: $name ---"
     bash "$script"
     echo "--- Готово: $name ---"
