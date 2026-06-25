@@ -140,7 +140,7 @@ cat > "$OUT" <<JSONEOF
     "parallel_downloads": 10
   },
   "profile_config": {
-    "profile": { "details": [], "main": "Sway" }
+        "profile": { "details": ["Sway"], "main": "Desktop" }
   },
   "script": "guided",
   "silent": false,

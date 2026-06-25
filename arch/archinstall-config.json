@@ -92,8 +92,8 @@
   },
   "profile_config": {
     "profile": {
-      "details": [],
-      "main": "Sway"
+      "details": ["Sway"],
+      "main": "Desktop"
     }
   },
   "script": "guided",
