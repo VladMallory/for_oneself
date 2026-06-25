@@ -7,9 +7,7 @@ flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/fl
 
 echo "=== 2. Установка Flatpak приложений ==="
 apps=(
-    chat.simplex.simplex
     com.anydesk.Anydesk
-    com.axosoft.GitKraken
     com.bitwarden.desktop
     com.brave.Browser
     com.getpostman.Postman
@@ -18,22 +16,12 @@ apps=(
     com.obsproject.Studio
     com.termius.Termius
     im.riot.Riot
-    io.github.Fndroid.clash_for_windows
-    io.github.thetumultuousunicornofdarkness.cpu-x
-    io.podman_desktop.PodmanDesktop
     md.obsidian.Obsidian
-    net.lutris.Lutris
-    org.freedesktop.LinuxAudio.Plugins.Calf
-    org.freedesktop.LinuxAudio.Plugins.LSP
-    org.freedesktop.LinuxAudio.Plugins.MDA
-    org.freedesktop.LinuxAudio.Plugins.ZamPlugins
-    org.freedesktop.LinuxAudio.Plugins.x42Plugins
     org.qbittorrent.qBittorrent
     org.signal.Signal
     org.telegram.desktop
     org.videolan.VLC
     ru.linux_gaming.PortProton
-    ru.yandex.Browser
 )
 
 # Установка всех приложений для текущего пользователя
