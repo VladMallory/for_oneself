@@ -2,15 +2,18 @@
 
 set -e
 
-echo "=== Установка QEMU/KVM + libvirt + virt-manager ==="
+DIR="$(cd "$(dirname "$0")" && pwd)"
+source "$DIR/common.sh"
+
+log "=== Установка QEMU/KVM + libvirt + virt-manager ==="
 sudo pacman -S --needed --noconfirm \
     qemu-full libvirt virt-manager \
     edk2-ovmf dnsmasq iptables-nft
 
-echo "=== Включение libvirtd ==="
+log "=== Включение libvirtd ==="
 sudo systemctl enable --now libvirtd.service
 
-echo "=== Добавление пользователя в группы ==="
+log "=== Добавление пользователя в группы ==="
 sudo usermod -aG libvirt,kvm "$USER"
 
-echo "Виртуальные машины готовы. Перелогиньтесь или выполните 'newgrp libvirt && newgrp kvm'"
+log "Виртуальные машины готовы. Перелогиньтесь или выполните 'newgrp libvirt && newgrp kvm'"

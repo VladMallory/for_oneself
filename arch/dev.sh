@@ -4,18 +4,16 @@ set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(dirname "$DIR")"
+source "$DIR/common.sh"
 
-echo "=== Go ==="
-sudo pacman -S --needed --noconfirm go
-
-echo "=== Rust (rustup через зеркало Tsinghua) ==="
+log "=== Rust (rustup через зеркало Tsinghua) ==="
 if ! command -v rustup &> /dev/null; then
     export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
     export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
 
-echo "=== Кэш для cargo ==="
+log "=== Кэш для cargo ==="
 mkdir -p ~/.cargo
 cat >> ~/.cargo/config.toml << 'EOF'
 
@@ -26,29 +24,29 @@ replace-with = "tuna"
 registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
 EOF
 
-echo "=== Docker и Compose ==="
+log "=== Docker и Compose ==="
 sudo pacman -S --needed --noconfirm docker docker-compose
 
-echo "=== Make ==="
+log "=== Make ==="
 sudo pacman -S --needed --noconfirm make
 
-echo "=== Lazygit ==="
+log "=== Lazygit ==="
 if ! command -v lazygit &> /dev/null; then
     go install -v github.com/jesseduffield/lazygit@latest
 fi
 
-echo "=== Инструменты Go ==="
+log "=== Инструменты Go ==="
 command -v gofumpt &> /dev/null || go install -v mvdan.cc/gofumpt@latest
 command -v golangci-lint &> /dev/null || go install -v github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
-echo "=== Настройка Docker ==="
+log "=== Настройка Docker ==="
 sudo systemctl enable --now docker.service
 if ! getent group docker | grep -q "\b${USER}\b"; then
     sudo usermod -aG docker "$USER"
     echo "Пользователь добавлен в группу docker. Перелогиньтесь или выполните 'newgrp docker'"
 fi
 
-echo "=== Go в PATH ==="
+log "=== Go в PATH ==="
 if ! grep -q "go/bin" "$HOME/.zshrc" 2>/dev/null; then
     cat >> "$HOME/.zshrc" << 'EOF'
 
@@ -57,4 +55,4 @@ export PATH=$PATH:$HOME/go/bin
 EOF
 fi
 
-echo "Dev-окружение готово"
+log "Dev-окружение готово"

@@ -4,12 +4,13 @@ set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(dirname "$DIR")"
+source "$DIR/common.sh"
 
-echo "=== Установка Alacritty ==="
+log "=== Установка Alacritty ==="
 sudo pacman -S --needed --noconfirm alacritty
 
-echo "=== Копирование конфига Alacritty ==="
+log "=== Копирование конфига Alacritty ==="
 mkdir -p ~/.config/alacritty
 cp "$REPO/alacrity/alacrity.toml" ~/.config/alacritty/alacritty.toml
 
-echo "Alacritty установлен и настроен"
+log "Alacritty установлен и настроен"

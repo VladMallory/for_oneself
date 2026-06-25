@@ -3,11 +3,12 @@
 set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
+source "$DIR/common.sh"
 
-echo "=== Установка base-devel (нужно для сборки AUR) ==="
+log "=== Установка base-devel (нужно для сборки AUR) ==="
 sudo pacman -Syu --noconfirm --needed base-devel
 
-echo "=== Установка yay (AUR helper) ==="
+log "=== Установка yay (AUR helper) ==="
 if ! command -v yay &> /dev/null; then
     sudo pacman -S --noconfirm go
     cd /tmp
@@ -17,13 +18,13 @@ if ! command -v yay &> /dev/null; then
     cd "$DIR"
 fi
 
-echo "=== Запуск всех скриптов в $DIR ==="
+log "=== Запуск всех скриптов в $DIR ==="
 for script in "$DIR"/*.sh; do
     name="$(basename "$script")"
     [[ "$name" == "install.sh" || "$name" == "gen-config.sh" ]] && continue
-    echo "--- Выполняется: $name ---"
+    log "--- Выполняется: $name ---"
     bash "$script"
-    echo "--- Готово: $name ---"
+    log "--- Готово: $name ---"
 done
 
-echo "=== Все скрипты выполнены ==="
+log "=== Все скрипты выполнены ==="

@@ -4,8 +4,9 @@ set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(dirname "$DIR")"
+source "$DIR/common.sh"
 
-echo "=== Установка Sway и Waybar ==="
+log "=== Установка Sway и Waybar ==="
 sudo pacman -S --needed --noconfirm \
     sway waybar rofi \
     mako grim slurp \
@@ -14,13 +15,13 @@ sudo pacman -S --needed --noconfirm \
     polkit-kde-agent \
     ttf-jetbrains-mono-nerd
 
-echo "=== Копирование конфига Sway ==="
+log "=== Копирование конфига Sway ==="
 mkdir -p ~/.config/sway
 cp "$REPO/wm/sway/config" ~/.config/sway/config
 
-echo "=== Копирование конфига Waybar ==="
+log "=== Копирование конфига Waybar ==="
 mkdir -p ~/.config/waybar
 cp "$REPO/wm/waybar/config" ~/.config/waybar/config
 cp "$REPO/wm/waybar/style.css" ~/.config/waybar/style.css
 
-echo "Sway и Waybar установлены и настроены"
+log "Sway и Waybar установлены и настроены"
