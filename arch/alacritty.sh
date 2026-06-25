@@ -10,6 +10,6 @@ sudo pacman -S --needed --noconfirm alacritty
 
 echo "=== Копирование конфига Alacritty ==="
 mkdir -p ~/.config/alacritty
-cp "$REPO/alacrity/alacritty.toml" ~/.config/alacritty/alacritty.toml
+cp "$REPO/alacrity/alacrity.toml" ~/.config/alacritty/alacritty.toml
 
 echo "Alacritty установлен и настроен"
