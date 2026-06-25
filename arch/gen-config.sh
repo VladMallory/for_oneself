@@ -77,7 +77,7 @@ cat > "$OUT" <<JSONEOF
         "partitions": [
           {
             "btrfs": [],
-            "flags": ["boot"],
+            "flags": ["boot", "esp"],
             "fs_type": "fat32",
             "size": { "sector_size": { "value": 512, "unit": "B" }, "unit": "MiB", "value": $BOOT_MIB },
             "mount_options": [],
