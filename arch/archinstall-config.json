@@ -90,11 +90,13 @@
     "color": true,
     "parallel_downloads": 10
   },
-  "profile_config": {
+    "profile_config": {
     "profile": {
       "details": ["Sway"],
       "main": "Desktop"
-    }
+    },
+    "gfx_driver": "Intel (open-source)",
+    "greeter": "ly"
   },
   "script": "guided",
   "silent": false,

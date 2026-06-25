@@ -140,7 +140,9 @@ cat > "$OUT" <<JSONEOF
     "parallel_downloads": 10
   },
   "profile_config": {
-        "profile": { "details": ["Sway"], "main": "Desktop" }
+        "profile": { "details": ["Sway"], "main": "Desktop" },
+        "gfx_driver": "Intel (open-source)",
+        "greeter": "ly"
   },
   "script": "guided",
   "silent": false,
