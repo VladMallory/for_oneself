@@ -2,11 +2,7 @@
 
 set -e
 
-# shellcheck disable=SC1090,SC1091
-[ -f ~/.bashrc ] && source ~/.bashrc
-[ -f ~/.zshrc ]  && source ~/.zshrc
-
-if command -v opencode &> /dev/null; then
+if [ -f "$HOME/.opencode/bin/opencode" ]; then
     echo "=== opencode уже установлен, пропускаем ==="
     exit 0
 fi
