@@ -48,7 +48,7 @@
             "size": { "sector_size": { "value": 512, "unit": "B" }, "unit": "MiB", "value": 450000 },
             "mount_options": [],
             "mountpoint": "/",
-            "start": { "sector_size": { "value": 512, "unit": "B" }, "unit": "GiB", "value": 21 },
+            "start": { "sector_size": { "value": 512, "unit": "B" }, "unit": "MiB", "value": 21505 },
             "status": "create",
             "type": "primary",
             "dev_path": null,
