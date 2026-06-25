@@ -5,7 +5,11 @@ set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(dirname "$DIR")"
 
-echo "=== Бэкап старого Neovim конфига ==="
+echo "=== Проверка AstroNvim ==="
+if [ -d ~/.config/nvim/lua/user ]; then
+    echo "AstroNvim уже настроен, пропускаем"
+    exit 0
+fi
 if [ -d ~/.config/nvim ]; then
     mv ~/.config/nvim ~/.config/nvim.bak.$(date +%s)
 fi

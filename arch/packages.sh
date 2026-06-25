@@ -8,6 +8,8 @@ sudo pacman -S --needed --noconfirm \
     thunar qalculate-gtk baobab qbittorrent
 
 echo "=== AUR пакеты ==="
-yay -S --needed --noconfirm flclash-bin localsend-bin
+if ! command -v flclash &> /dev/null; then
+    yay -S --needed --noconfirm flclash-bin localsend-bin
+fi
 
 echo "Пакеты установлены"

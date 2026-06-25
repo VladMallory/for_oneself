@@ -114,7 +114,7 @@ exec_always blueman-applet
 
 ### background
 
-output * bg "/home/pc/Изображения/Город.jpg" fill
+# output * bg "/home/pc/Изображения/Город.jpg" fill
 
 for_window [class="xembedsniproxy"] floating enable
 for_window [class="xembedsniproxy"] move position -200 -200
