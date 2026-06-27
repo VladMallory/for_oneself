@@ -5,32 +5,34 @@ source "$DIR/common.sh"
 
 log "=== Фикс MIME-типов PortProton ==="
 
-DESKTOP_FILE="/usr/share/applications/ru.linux_gaming.PortProton.desktop"
-LOCAL_DESKTOP="$HOME/.local/share/applications/ru.linux_gaming.PortProton.desktop"
+SYS_FILE="/usr/share/applications/ru.linux_gaming.PortProton.desktop"
+LOCAL_FILE="$HOME/.local/share/applications/ru.linux_gaming.PortProton.desktop"
 
-NEEDED_MIME="application/vnd.microsoft.portable-executable"
+MIME_LINE="MimeType=application/x-wine-extension-msp;application/x-msi;application/x-ms-dos-executable;application/x-msdownload;application/vnd.microsoft.portable-executable;text/win-bat;x-scheme-handler/portproton;"
 
-if [[ ! -f "$DESKTOP_FILE" ]]; then
+if [[ ! -f "$SYS_FILE" ]]; then
     log "PortProton не установлен, пропускаем."
     exit 0
 fi
 
 mkdir -p "$HOME/.local/share/applications"
 
-if [[ -f "$LOCAL_DESKTOP" ]]; then
-    if grep -q "$NEEDED_MIME" "$LOCAL_DESKTOP"; then
-        log "MIME-тип уже добавлен."
+if [[ -f "$LOCAL_FILE" ]]; then
+    if grep -q "application/x-msdownload" "$LOCAL_FILE" && grep -q "application/vnd.microsoft.portable-executable" "$LOCAL_FILE"; then
+        log "MIME-типы уже добавлены."
         exit 0
     fi
-    cp "$LOCAL_DESKTOP" "$LOCAL_DESKTOP.bak"
+    cp "$LOCAL_FILE" "$LOCAL_FILE.bak"
 else
-    cp "$DESKTOP_FILE" "$LOCAL_DESKTOP"
+    cp "$SYS_FILE" "$LOCAL_FILE"
 fi
 
-sed -i "s|application/x-ms-dos-executable;text/win-bat|application/x-ms-dos-executable;$NEEDED_MIME;text/win-bat|" "$LOCAL_DESKTOP"
+sed -i "/^MimeType=/c\\$MIME_LINE" "$LOCAL_FILE"
 
 update-desktop-database "$HOME/.local/share/applications/" 2>/dev/null
 
-xdg-mime default ru.linux_gaming.PortProton.desktop "$NEEDED_MIME" 2>/dev/null
+for mime in "application/vnd.microsoft.portable-executable" "application/x-msdownload"; do
+    xdg-mime default ru.linux_gaming.PortProton.desktop "$mime" 2>/dev/null
+done
 
-log "MIME-тип $NEEDED_MIME добавлен. Готово!"
+log "MIME-типы добавлены. Готово!"
