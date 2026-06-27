@@ -3,7 +3,6 @@
 set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
-REPO="$(dirname "$DIR")"
 source "$DIR/common.sh"
 
 log "=== Rust (rustup через зеркало Tsinghua) ==="

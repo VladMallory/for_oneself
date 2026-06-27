@@ -3,7 +3,7 @@
 set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
-REPO="$(dirname "$DIR")"
+REPO="$(dirname "$(dirname "$DIR")")"
 source "$DIR/common.sh"
 
 log "=== Установка Zsh ==="
