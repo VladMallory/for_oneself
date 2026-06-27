@@ -30,12 +30,12 @@ cd for_oneself/arch
 
 | Скрипт | Назначение |
 |--------|-----------|
-| `alacritty.sh` | Alacritty + конфиг |
-| `wm.sh` | Sway, Waybar, rofi, mako, pipewire, grim, NetworkManager |
-| `dev.sh` | Go, Rust, Docker, lazygit, gofumpt, golangci-lint |
-| `zsh.sh` | Zsh, Oh My Zsh, Powerlevel10k, плагины |
-| `packages.sh` | btop, fastfetch, firefox, thunar, qbittorrent и др. |
-| `opencode.sh` | OpenCode CLI |
-| `astro-nvim.sh` | Neovim + AstroNvim v3 |
-| `virtual-machine.sh` | QEMU/KVM, libvirt, virt-manager |
-| `flatpuk.sh` | Плагин Flatpak |
+| `packages/alacritty.sh` | Alacritty + конфиг |
+| `packages/wm.sh` | Sway, Waybar, rofi, mako, pipewire, grim, NetworkManager |
+| `packages/dev.sh` | Go, Rust, Docker, lazygit, gofumpt, golangci-lint |
+| `packages/zsh.sh` | Zsh, Oh My Zsh, Powerlevel10k, плагины |
+| `packages/packages.sh` | btop, fastfetch, firefox, thunar, qbittorrent и др. |
+| `packages/opencode.sh` | OpenCode CLI |
+| `packages/astro-nvim.sh` | Neovim + AstroNvim v3 |
+| `packages/virtual-machine.sh` | QEMU/KVM, libvirt, virt-manager |
+| `packages/zz-flatpak.sh` | Плагин Flatpak |

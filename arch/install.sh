@@ -3,7 +3,7 @@
 set -e
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
-source "$DIR/common.sh"
+source "$DIR/packages/common.sh"
 
 log "=== Установка base-devel (нужно для сборки AUR) ==="
 sudo pacman -Syu --noconfirm --needed base-devel
@@ -18,10 +18,9 @@ if ! command -v yay &> /dev/null; then
     cd "$DIR"
 fi
 
-log "=== Запуск всех скриптов в $DIR ==="
-for script in "$DIR"/*.sh; do
+log "=== Запуск всех скриптов в $DIR/packages ==="
+for script in "$DIR"/packages/*.sh; do
     name="$(basename "$script")"
-    [[ "$name" == "install.sh" || "$name" == "gen-config.sh" ]] && continue
     log "--- Выполняется: $name ---"
     bash "$script"
     log "--- Готово: $name ---"
