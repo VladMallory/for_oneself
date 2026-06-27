@@ -110,6 +110,7 @@ exec_always xembedsniproxy
 # exec_always env XEMBEDDNOPROXY=1 xembedsniproxy
 # exec_always xembedsniproxy >/dev/null 2>&1
 exec_always blueman-applet
+exec_always flclash
 # exec_always polybar main
 
 ### background
@@ -136,11 +137,12 @@ client.placeholder      #282828 #282828 #928374 #282828 #282828
 
 
 # Автозапуск
-exec_always swaymsg "workspace 2; exec brave-browser"
+exec_always swaymsg "workspace 4; exec brave"
+exec_always swaymsg "workspace 5; exec Telegram"
 # exec_always swaymsg "workspace 4; exec happ"
 
 
 # Горячие клавиши
-bindsym --to-code $mod+t exec flatpak run org.telegram.desktop
-bindsym --to-code $mod+b exec flatpak run com.brave.Browser
+bindsym --to-code $mod+t exec Telegram
+bindsym --to-code $mod+b exec brave
 
