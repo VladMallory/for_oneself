@@ -24,4 +24,8 @@ mkdir -p ~/.config/waybar
 cp "$REPO/wm/waybar/config" ~/.config/waybar/config
 cp "$REPO/wm/waybar/style.css" ~/.config/waybar/style.css
 
+log "=== Настройка GRUB (тихий запуск) ==="
+sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet systemd.show_status=false"/' /etc/default/grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
 log "Sway и Waybar установлены и настроены"
