@@ -9,7 +9,7 @@ set $menu rofi -show drun -show-icons -modi drun,run,window,favorites:~/.config/
 exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 ### environment
-exec_always dbus-update-activation-environment --systemd GTK_THEME=Yaru-dark
+exec_always dbus-update-activation-environment --systemd GTK_THEME=Adwaita:dark
 exec_always dbus-update-activation-environment --systemd MOZ_ENABLE_WAYLAND=1
 exec_always dbus-update-activation-environment --systemd QT_QPA_PLATFORM=wayland
 exec_always dbus-update-activation-environment --systemd SDL_VIDEODRIVER=wayland
@@ -19,6 +19,10 @@ exec_always dbus-update-activation-environment --systemd SDL_VIDEODRIVER=wayland
 input * {
     xkb_layout us,ru
     xkb_options grp:alt_space_toggle
+}
+
+exec_always {
+    export GTK_THEME=Adwaita:dark
 }
 
 input type:touchpad {
@@ -48,7 +52,7 @@ bindsym --to-code $mod+q kill
 
 ### reload config
 
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c exec "pkill -x waybar; swaymsg reload"
 
 ### exit sway
 
@@ -107,15 +111,13 @@ exec_always /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 exec_always nm-applet --no-agent
 exec_always mako
 exec_always xembedsniproxy
-# exec_always env XEMBEDDNOPROXY=1 xembedsniproxy
-# exec_always xembedsniproxy >/dev/null 2>&1
 exec_always blueman-applet
 exec_always flclash
 # exec_always polybar main
 
 ### background
 
-# output * bg "/home/pc/Изображения/Город.jpg" fill
+output * bg "/home/pc/Documents/wallpaper.jpg" fill
 
 for_window [class="xembedsniproxy"] floating enable
 for_window [class="xembedsniproxy"] move position -200 -200
@@ -137,8 +139,10 @@ client.placeholder      #282828 #282828 #928374 #282828 #282828
 
 
 # Автозапуск
-exec_always swaymsg "workspace 4; exec brave"
-exec_always swaymsg "workspace 5; exec Telegram"
+exec_always brave
+exec_always Telegram
+for_window [app_id="brave-browser"] move container to workspace 4
+for_window [app_id="org.telegram.desktop"] move container to workspace 5
 # exec_always swaymsg "workspace 4; exec happ"
 
 
