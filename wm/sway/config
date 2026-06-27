@@ -149,4 +149,5 @@ for_window [app_id="org.telegram.desktop"] move container to workspace 5
 # Горячие клавиши
 bindsym --to-code $mod+t exec Telegram
 bindsym --to-code $mod+b exec brave
+bindsym $mod+Shift+p exec "swaymsg input '10182:480:GXTP7863:00_27C6:01E0_Touchpad' events disabled; swaymsg input '1:1:AT_Translated_Set_2_keyboard' events disabled; sleep 10; swaymsg input '10182:480:GXTP7863:00_27C6:01E0_Touchpad' events enabled; swaymsg input '1:1:AT_Translated_Set_2_keyboard' events enabled"
 
