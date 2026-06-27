@@ -24,7 +24,8 @@ mkdir -p ~/.config/waybar
 cp "$REPO/wm/waybar/config" ~/.config/waybar/config
 cp "$REPO/wm/waybar/style.css" ~/.config/waybar/style.css
 
-log "=== Настройка GRUB (тихий запуск) ==="
+log "=== Настройка GRUB (тихий запуск, таймаут 2с) ==="
+sudo sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=2/' /etc/default/grub
 sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"/GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet systemd.show_status=false"/' /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
