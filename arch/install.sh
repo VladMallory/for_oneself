@@ -22,7 +22,15 @@ log "=== Запуск всех скриптов в $DIR/packages ==="
 for script in "$DIR"/packages/*.sh; do
     name="$(basename "$script")"
     log "--- Выполняется: $name ---"
-    bash "$script"
+
+    tmpfile=$(mktemp)
+    bash "$script" 2>&1 | tee "$tmpfile"
+    clear
+
+    orange=$'\033[38;5;214m'
+    grep -a -F "$orange" "$tmpfile" 2>/dev/null || true
+    rm -f "$tmpfile"
+
     log "--- Готово: $name ---"
 done
 

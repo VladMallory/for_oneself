@@ -42,7 +42,7 @@ log "=== Настройка Docker ==="
 sudo systemctl enable --now docker.service
 if ! getent group docker | grep -q "\b${USER}\b"; then
     sudo usermod -aG docker "$USER"
-    echo "Пользователь добавлен в группу docker. Перелогиньтесь или выполните 'newgrp docker'"
+    log "Пользователь добавлен в группу docker. Перелогиньтесь или выполните 'newgrp docker'"
 fi
 
 log "=== Go в PATH ==="
