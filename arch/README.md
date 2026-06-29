@@ -1,5 +1,12 @@
 # Arch установка
+## Одной командой
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/VladMallory/for_oneself/main/arch/install-quck.sh)
+Либо через wget, если нет curl:
+bash <(wget -qO- https://raw.githubusercontent.com/VladMallory/for_oneself/main/arch/install-quck.sh)
+```
 
+## Вручную
 ```bash
 pacman -Sy git
 git clone https://github.com/VladMallory/for_oneself.git
@@ -9,7 +16,7 @@ archinstall --config archinstall-config.json --creds archinstall-creds.json
 ```
 
 
-## Настройка системы (после перезагрузки)
+### Настройка системы (после перезагрузки)
 ```bash
 cd for_oneself/arch
 ./install.sh
@@ -26,7 +33,7 @@ cd for_oneself/arch
 - QEMU/KVM + libvirt + virt-manager
 - btop, fastfetch, firefox, thunar и др.
 
-## Что устанавливается
+### Что устанавливается
 
 | Скрипт | Назначение |
 |--------|-----------|
