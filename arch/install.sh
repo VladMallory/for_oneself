@@ -5,6 +5,8 @@ set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$DIR/packages/common.sh"
 
+source ~/.bashrc 2>/dev/null || true
+
 log "=== Установка base-devel (нужно для сборки AUR) ==="
 sudo pacman -Syu --noconfirm --needed base-devel
 
