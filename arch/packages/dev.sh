@@ -6,6 +6,7 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$DIR/common.sh"
 
 log "=== Rust (rustup через зеркало Tsinghua) ==="
+source "$HOME/.cargo/env" 2>/dev/null || true
 if ! command -v cargo &> /dev/null; then
     export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
     export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
