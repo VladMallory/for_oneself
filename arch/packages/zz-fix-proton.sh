@@ -6,7 +6,7 @@ source "$DIR/common.sh"
 log "=== Фикс PortProton (MIME-типы + DISPLAY + 32-bit deps) ==="
 
 log "Смена зеркала Flathub на SJTU..."
-flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub 2>/dev/null || true
+flatpak remote-modify flathub --url=https://mirrors.ustc.edu.cn/flathub 2>/dev/null || true
 
 log "Установка 32-битных зависимостей для Wine/Proton..."
 LIBS32=(
