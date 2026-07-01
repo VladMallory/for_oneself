@@ -113,6 +113,10 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
+# SSH agent
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+ssh-add ~/.ssh/github 2>/dev/null
+
 # opencode
 export PATH=/home/pc/.opencode/bin:$PATH
 
