@@ -6,6 +6,6 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$DIR/common.sh"
 
 log "=== Установка wl-clipboard и grimshot ==="
-yay -S --noconfirm --needed wl-clipboard grimshot
+sudo pacman -S --noconfirm --needed sway-contrib
 
 log "Скриншоты готовы"
