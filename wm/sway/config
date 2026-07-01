@@ -19,16 +19,20 @@ exec_always dbus-update-activation-environment --systemd SDL_VIDEODRIVER=wayland
 input * {
     xkb_layout us,ru
     xkb_options grp:alt_space_toggle
-    accel_profile flat
 }
 
-exec_always {
-    export GTK_THEME=Adwaita:dark
+input type:pointer {
+    accel_profile flat
+    pointer_accel 0.3
 }
 
 input type:touchpad {
     natural_scroll enabled
     tap enabled
+}
+
+exec_always {
+    export GTK_THEME=Adwaita:dark
 }
 
 bindsym --to-code $mod+f layout toggle tabbed split
