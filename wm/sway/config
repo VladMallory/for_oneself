@@ -19,6 +19,7 @@ exec_always dbus-update-activation-environment --systemd SDL_VIDEODRIVER=wayland
 input * {
     xkb_layout us,ru
     xkb_options grp:alt_space_toggle
+    accel_profile flat
 }
 
 exec_always {
@@ -58,6 +59,11 @@ bindsym $mod+Shift+c exec "pkill -x waybar; swaymsg reload"
 
 bindsym $mod+Shift+e exec "swaymsg exit"
 
+### display configuration
+
+output HDMI-A-1 pos 1920 0 res 2560x1440
+output eDP-1 pos 0 0 res 1920x1200
+
 ### focus movement
 
 bindsym --to-code $mod+h focus left
@@ -88,6 +94,11 @@ bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 
+### move workspace between outputs
+
+bindsym $mod+Control+l move workspace to output right
+bindsym $mod+Control+h move workspace to output left
+
 ### volume
 
 bindsym --to-code $mod+p exec pavucontrol
@@ -99,6 +110,9 @@ bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+bindsym --to-code $mod+8 exec brightness down
+bindsym --to-code $mod+9 exec brightness up
 
 ### screenshot
 
