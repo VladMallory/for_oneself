@@ -109,6 +109,7 @@ bindsym --to-code $mod+p exec pavucontrol
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume alsa_output.usb-C-Media_Electronics_Inc_MCHOSE_V9_PRO_0123456789AB-01.analog-stereo +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume alsa_output.usb-C-Media_Electronics_Inc_MCHOSE_V9_PRO_0123456789AB-01.analog-stereo -5%
 bindsym XF86AudioMute exec pactl set-sink-mute alsa_output.usb-C-Media_Electronics_Inc_MCHOSE_V9_PRO_0123456789AB-01.analog-stereo toggle
+bindsym $mod+minus exec ~/.local/bin/audio-toggle
 
 ### brightness
 
