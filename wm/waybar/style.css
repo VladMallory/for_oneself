@@ -35,6 +35,10 @@ window#waybar {
   color: #fabd2f;
 }
 
+#custom-volume {
+  color: #fabd2f;
+}
+
 #backlight {
   color: #fe8019;
 }
@@ -43,6 +47,7 @@ window#waybar {
 #battery,
 #network,
 #pulseaudio,
+#custom-volume,
 #backlight {
   margin-left: 10px;
   margin-right: 10px;
