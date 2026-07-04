@@ -2,20 +2,19 @@
 MCHOSE="alsa_output.usb-C-Media_Electronics_Inc_MCHOSE_V9_PRO_0123456789AB-01.analog-stereo"
 SPEAKER="alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__Speaker__sink"
 EE_LINK="/home/pc/.local/bin/ee-mchose-link.sh"
+PACTL="/usr/bin/pactl"
 
-prev=""
-while true; do
-    status=$(pactl list sinks short 2>/dev/null | grep "$MCHOSE" | awk '{print $NF}')
-    if [ "$status" = "RUNNING" ] || [ "$status" = "SUSPENDED" ]; then
-        if [ "$prev" != "connected" ]; then
-            prev="connected"
-            "$EE_LINK" 2>/dev/null
-        fi
-    else
-        if [ "$prev" != "disconnected" ]; then
-            prev="disconnected"
-            pactl set-default-sink "$SPEAKER" 2>/dev/null
-        fi
-    fi
-    sleep 2
+$PACTL subscribe | while read -r event; do
+    case "$event" in
+        *"'remove' on sink"*)
+            $PACTL list sinks short 2>/dev/null | grep -q "$MCHOSE" || {
+                $PACTL set-default-sink "$SPEAKER" 2>/dev/null
+            }
+            ;;
+        *"'new' on sink"*)
+            $PACTL list sinks short 2>/dev/null | grep -q "$MCHOSE" && {
+                "$EE_LINK" 2>/dev/null
+            }
+            ;;
+    esac
 done

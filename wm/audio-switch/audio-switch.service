@@ -1,6 +1,6 @@
 [Unit]
 Description=Auto-switch audio between MCHOSE and Speakers
-After=pipewire.service pipewire-pulse.service
+After=pipewire-pulse.service
 
 [Service]
 Type=simple
