@@ -5,12 +5,11 @@
 
   "modules-left": ["sway/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "sway/language", "custom/volume", "backlight", "battery"],
+  "modules-right": ["tray", "sway/language", "pulseaudio", "backlight", "battery"],
 
-  "custom/volume": {
-    "exec": "pactl get-sink-volume 684 | awk '{print $5}' | tr -d '%\n' && echo '%'",
-    "interval": 1,
-    "format": " │ VOL {}"
+  "pulseaudio": {
+    "format": " │ VOL {volume}%{icon}",
+    "format-muted": " │ MUTED {volume}%"
   },
 
   "backlight": {
