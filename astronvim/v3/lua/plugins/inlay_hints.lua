@@ -12,6 +12,9 @@ return {
               hints = {
                 parameterNames = true,
               },
+              gofumpt = true,
+              completeUnimported = true,
+              staticcheck = true,
             },
           },
         },

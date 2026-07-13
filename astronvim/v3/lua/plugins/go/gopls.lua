@@ -36,6 +36,14 @@ return {
         pattern = { "go", "gomod", "gowork", "gotmpl" },
         callback = function(args) ensure_gopls(args.buf) end,
       })
+
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = group,
+        pattern = { "*.go" },
+        callback = function(args)
+          vim.lsp.buf.format({ bufnr = args.buf, async = false })
+        end,
+      })
     end,
   },
 }

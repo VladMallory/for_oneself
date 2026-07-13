@@ -4,4 +4,5 @@ return {
   { import = "plugins.go.mason" },
   { import = "plugins.go.gomodifytags" },
   { import = "plugins.go.explorer" },
+  { import = "plugins.go.download" },
 }
