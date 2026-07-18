@@ -15,6 +15,9 @@ return {
               gofumpt = true,
               completeUnimported = true,
               staticcheck = true,
+              analyses = {
+                ST1000 = false, -- отключить требование комментария в начале пакета
+              },
             },
           },
         },
