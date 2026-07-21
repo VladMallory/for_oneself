@@ -132,6 +132,7 @@ exec_always mako
 exec_always xembedsniproxy
 exec_always blueman-applet
 exec_always flclash
+exec_always ~/.local/bin/battery-saver.sh
 # exec_always polybar main
 
 ### background
