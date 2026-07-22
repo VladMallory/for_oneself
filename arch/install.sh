@@ -14,6 +14,7 @@ log "=== Установка yay (AUR helper) ==="
 if ! command -v yay &> /dev/null; then
     sudo pacman -S --noconfirm go
     cd /tmp
+    rm -rf yay
     git clone --depth 1 https://aur.archlinux.org/yay.git
     cd yay
     BUILD_USER="${SUDO_USER:-$(logname 2>/dev/null)}"
