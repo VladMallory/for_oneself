@@ -22,7 +22,7 @@ log "=== Клонирование AstroNvim template ==="
 git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
-log "=== Копирование конфигурации astronvim v3 ==="
-cp -r "$REPO/astronvim/v3/"* ~/.config/nvim/
+log "=== Копирование конфигурации astronvim v4 ==="
+cp -r "$REPO/astronvim/v4/"* ~/.config/nvim/
 
 log "AstroNvim установлен и настроен"
