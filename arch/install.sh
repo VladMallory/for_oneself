@@ -7,22 +7,13 @@ source "$DIR/packages/common.sh"
 
 source ~/.bashrc 2>/dev/null || true
 
-log "=== Установка base-devel (нужно для сборки AUR) ==="
-sudo pacman -Syu --noconfirm --needed base-devel
-
 log "=== Установка yay (AUR helper) ==="
 if ! command -v yay &> /dev/null; then
-    sudo pacman -S --noconfirm go
     cd /tmp
     rm -rf yay
     git clone --depth 1 https://aur.archlinux.org/yay.git
     cd yay
-    BUILD_USER="${SUDO_USER:-$(logname 2>/dev/null)}"
-    if [ -n "$BUILD_USER" ]; then
-        sudo -u "$BUILD_USER" makepkg -si --noconfirm --skippgpcheck
-    else
-        makepkg -si --noconfirm --skippgpcheck
-    fi
+    makepkg -si --noconfirm --skippgpcheck
     cd "$DIR"
 fi
 
