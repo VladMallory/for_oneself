@@ -24,7 +24,6 @@ for script in "$DIR"/packages/*.sh; do
 
     tmpfile=$(mktemp)
     bash "$script" 2>&1 | tee "$tmpfile"
-    clear
 
     orange=$'\033[38;5;214m'
     grep -a -F "$orange" "$tmpfile" 2>/dev/null || true

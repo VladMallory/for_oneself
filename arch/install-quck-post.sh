@@ -12,7 +12,7 @@ if [ -n "$BUILD_USER" ]; then
     chown -R "$BUILD_USER" /tmp/for_oneself
 
     cd /tmp/for_oneself/arch
-    sudo -u "$BUILD_USER" -H bash install.sh
+    sudo -u "$BUILD_USER" -H bash install.sh < /dev/tty
 else
     cd /tmp/for_oneself/arch
     bash install.sh
