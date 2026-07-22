@@ -4,7 +4,7 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$DIR/common.sh"
 
 log "=== 1. Подключение репозитория Flathub ==="
-if ! flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo 2>/dev/null; then
+if ! timeout 10 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo 2>/dev/null; then
     log "Flathub недоступен (возможно блокировка в РФ). Всё остальное уже установлено."
     exit 0
 fi
@@ -14,10 +14,9 @@ apps=(
     com.github.tchx84.Flatseal
 )
 
-# Установка всех приложений для текущего пользователя
 for app in "${apps[@]}"; do
     log "Установка $app..."
-    flatpak install --user -y flathub "$app" || log "Не удалось установить $app, пропускаем..."
+    timeout 30 flatpak install --user -y flathub "$app" || log "Не удалось установить $app, пропускаем..."
 done
 
 log "=== Flatpak приложения успешно установлены! ==="
