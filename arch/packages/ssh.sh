@@ -26,7 +26,11 @@ else
 fi
 
 log "=== Включение systemd SSH-agent socket ==="
-systemctl --user enable --now ssh-agent.socket
+if [ -n "$XDG_RUNTIME_DIR" ] && [ -n "$DBUS_SESSION_BUS_ADDRESS" ]; then
+    systemctl --user enable --now ssh-agent.socket
+else
+    log "  systemctl --user не доступен, пропускаем"
+fi
 pkill -u "$USER" -x "ssh-agent" 2>/dev/null || true
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 ssh-add "$HOME/.ssh/github" 2>/dev/null || true
