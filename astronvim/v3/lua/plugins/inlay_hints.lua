@@ -5,6 +5,11 @@ return {
       features = {
         inlay_hints = true,
       },
+      formatting = {
+        format_on_save = {
+          ignore_filetypes = { "go" },
+        },
+      },
       config = {
         gopls = {
           settings = {
