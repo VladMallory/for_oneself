@@ -16,7 +16,12 @@ if ! command -v yay &> /dev/null; then
     cd /tmp
     git clone --depth 1 https://aur.archlinux.org/yay.git
     cd yay
-    makepkg -si --noconfirm --skippgpcheck
+    BUILD_USER="${SUDO_USER:-$(logname 2>/dev/null)}"
+    if [ -n "$BUILD_USER" ]; then
+        sudo -u "$BUILD_USER" makepkg -si --noconfirm --skippgpcheck
+    else
+        makepkg -si --noconfirm --skippgpcheck
+    fi
     cd "$DIR"
 fi
 

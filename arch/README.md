@@ -19,7 +19,7 @@ archinstall --config archinstall-config.json --creds archinstall-creds.json
 # После установки
 ## Автоматический вариант
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/VladMallory/for_oneself/main/arch/install-quck-post.sh)
+curl -fsSL https://raw.githubusercontent.com/vladmallory/for_oneself/main/arch/install-quck-post.sh | sudo bash
 ```
 
 ## Ручной вариант
