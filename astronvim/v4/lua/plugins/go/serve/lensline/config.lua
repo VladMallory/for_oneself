@@ -5,7 +5,7 @@
 -- Для этого замени show_zero = true на show_zero = false (строка ниже).
 -- Тогда надпись будет появляться только при наличии ссылок/реализаций,
 -- и спам "0 implementations | 0 references" не будет отображаться.
---     show_zero = false,
+    -- show_zero = false,
 return {
   {
     "oribarilan/lensline.nvim",
@@ -22,7 +22,7 @@ return {
                 enabled = true,
                 include = { "impls", "refs" },
                 breakdown = true,
-                show_zero = true,
+                show_zero = false,
                 labels = {
                   impls = "implementations",
                   refs = "references",
