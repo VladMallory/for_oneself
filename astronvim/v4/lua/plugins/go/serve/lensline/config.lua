@@ -1,5 +1,11 @@
 -- Показывает "2 references | 1 implementation" над каждой функцией.
 -- Стиль как в JetBrains IDE.
+--
+-- Альтернативный вариант: скрыть строки, когда refs и impls равны 0.
+-- Для этого замени show_zero = true на show_zero = false (строка ниже).
+-- Тогда надпись будет появляться только при наличии ссылок/реализаций,
+-- и спам "0 implementations | 0 references" не будет отображаться.
+--     show_zero = false,
 return {
   {
     "oribarilan/lensline.nvim",
@@ -36,6 +42,14 @@ return {
           },
         },
       }
+
+      -- Фикс накопления виртуальных строк при сохранении
+      local renderer = require "lensline.renderer"
+      local orig_combined = renderer.render_combined_lenses
+      renderer.render_combined_lenses = function(bufnr)
+        renderer.clear_buffer(bufnr)
+        orig_combined(bufnr)
+      end
 
       -- Фикс для gopls: исправляет позицию имени функции в ответах LSP
       local utils = require "lensline.utils"

@@ -25,7 +25,7 @@ registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
 EOF
 
 log "=== Docker и Compose ==="
-sudo pacman -S --needed --noconfirm docker docker-compose
+sudo pacman -S --needed --noconfirm docker docker-compose docker-buildx
 
 log "=== Make ==="
 sudo pacman -S --needed --noconfirm make
