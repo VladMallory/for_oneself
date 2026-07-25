@@ -17,18 +17,33 @@ return {
         },
         lualine_c = {
           {
-            "diagnostics",
-            sources = { "nvim_diagnostic" },
-            sections = { "error", "warn", "info", "hint" },
-            symbols = {
-              error = "🚨",
-              warn = "💡",
-              info = "🔍",
-              hint = "📝",
-            },
-            colored = true,
-            update_in_insert = false,
-            always_visible = false,
+            function()
+              local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+              local warns = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+              local infos = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+              local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+              local total = errors + warns + infos + hints
+              if total == 0 then
+                return ""
+              end
+              local parts = {}
+              if errors > 0 then
+                parts[#parts + 1] = "%#DiagnosticError#🚨" .. errors .. "%*"
+              end
+              if warns > 0 then
+                parts[#parts + 1] = "%#DiagnosticWarn#💡" .. warns .. "%*"
+              end
+              if infos > 0 then
+                parts[#parts + 1] = "%#DiagnosticInfo#🔍" .. infos .. "%*"
+              end
+              if hints > 0 then
+                parts[#parts + 1] = "%#DiagnosticHint#📝" .. hints .. "%*"
+              end
+              return table.concat(parts, " ")
+            end,
+            on_click = function(_, _, _, _)
+              require("snacks").picker.diagnostics()
+            end,
           },
         },
 
