@@ -1,2 +1,3 @@
--- Визуальные настройки Rust
-return {}
+return {
+  { import = "plugins.rust.visual.docHighlight" },
+}
