@@ -37,6 +37,21 @@ return {
       },
     },
     config = function()
+      local function float_open()
+        local width = math.floor(vim.o.columns * 0.92)
+        local height = math.floor(vim.o.lines * 0.88)
+        local buf = vim.api.nvim_create_buf(false, true)
+        return vim.api.nvim_open_win(buf, true, {
+          relative = "editor",
+          width = width,
+          height = height,
+          row = math.floor((vim.o.lines - height) / 2),
+          col = math.floor((vim.o.columns - width) / 2),
+          style = "minimal",
+          border = "rounded",
+        })
+      end
+
       require("neotest").setup {
         adapters = {
           require "neotest-golang"(),
@@ -44,6 +59,12 @@ return {
         status = {
           signs = true,
           virtual_text = true,
+        },
+        summary = {
+          open = float_open,
+        },
+        output_panel = {
+          open = float_open,
         },
       }
     end,

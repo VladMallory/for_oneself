@@ -13,6 +13,7 @@ return {
 
         "gomodifytags",
         "iferr",
+        "gotests",
 
         -- rust
         "rust-analyzer",

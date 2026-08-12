@@ -5,5 +5,6 @@ return {
   { import = "plugins.go.keymap" },
   { import = "plugins.go.plugin" },
   { import = "plugins.go.serve" },
+  { import = "plugins.go.tests" },
   { import = "plugins.go.visual" },
 }

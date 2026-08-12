@@ -2,4 +2,6 @@
 return {
   { import = "plugins.plugins.git" },
   { import = "plugins.plugins.outline" },
+  { import = "plugins.plugins.ai.supermaven" },
+  { import = "plugins.plugins.ai.minuet" },
 }
