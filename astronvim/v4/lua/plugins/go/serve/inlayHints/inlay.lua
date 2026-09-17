@@ -12,6 +12,7 @@ return {
       gopls = {
         settings = {
           gopls = {
+            buildFlags = { "-tags=e2e" },
             hints = {
               parameterNames = true,
             },
