@@ -106,7 +106,7 @@ return {
               ST1022 = true,
               ST1023 = true,
               appendclipped = true,
-              fieldalignment = true,
+              fieldalignment = false, -- выключен: шумел на конфигах ради 24 байт
               shadow = true,
               slicesdelete = true,
             },
