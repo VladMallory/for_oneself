@@ -6,6 +6,9 @@ return {
     opts.filesystem = opts.filesystem or {}
     opts.filesystem.filtered_items = opts.filesystem.filtered_items or {}
     opts.filesystem.filtered_items.never_show = { ".DS_Store" }
+    -- Ширина боковой панели Neo-tree (Space + e). По умолчанию ~30, ставим побольше.
+    opts.window = opts.window or {}
+    opts.window.width = 40
     return opts
   end,
 }
