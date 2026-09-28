@@ -13,6 +13,11 @@ return {
     event = "LspAttach",
     config = function()
       require("lensline").setup {
+        -- Большой debounce, чтобы на сохранении (BufWritePre формат + gopls
+        -- переиндексация) не было промежуточного пустого состояния линз.
+        -- Старые линзы остаются висеть, пока не придут новые данные.
+        debounce_ms = 800,
+        silence_lsp = true,
         profiles = {
           {
             name = "jetbrains",
@@ -43,13 +48,12 @@ return {
         },
       }
 
-      -- Фикс накопления виртуальных строк при сохранении
-      local renderer = require "lensline.renderer"
-      local orig_combined = renderer.render_combined_lenses
-      renderer.render_combined_lenses = function(bufnr)
-        renderer.clear_buffer(bufnr)
-        orig_combined(bufnr)
-      end
+      -- NOTE: здесь раньше был monkey-patch с renderer.clear_buffer()
+      -- перед каждым render_combined_lenses ("фикс накопления").
+      -- Он и давал мигание: линзы стирались и рисовались заново на каждое
+      -- сохранение, код прыгал туда-сюда. В lensline v2.1.0 рендерер сам
+      -- делает diff (обновляет только изменённые строки и удаляет устаревшие),
+      -- поэтому принудительный clear не нужен и вреден. Удалено.
 
       -- Фикс для gopls: исправляет позицию имени функции в ответах LSP
       local utils = require "lensline.utils"
