@@ -14,7 +14,7 @@ sudo pacman -S --needed --noconfirm \
 
 log "=== AUR пакеты ==="
 if ! command -v flclash &> /dev/null; then
-    yay -S --needed --noconfirm flclash-bin localsend-bin obsidian-bin brave-bin anydesk-bin postman-bin termius
+    yay -S --needed --noconfirm localsend-bin obsidian-bin brave-bin postman-bin 
 fi
 
 log "Пакеты установлены"
