@@ -1,8 +1,12 @@
 # Arch установка (Hyprland + Noctalia)
 ## Шаг 1 — чистый Arch без конфигов (в live ISO)
+
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/VladMallory/for_oneself/main/arch/hyprland/install-quck-live.sh)
+```
+
 Либо через wget, если нет curl:
+```bash
 bash <(wget -qO- https://raw.githubusercontent.com/VladMallory/for_oneself/main/arch/hyprland/install-quck-live.sh)
 ```
 
