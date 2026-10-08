@@ -1,3 +1,9 @@
+# встроенная палитра Gruvbox, тёмный режим (как в GUI: source=builtin)
+[theme]
+mode = "dark"
+source = "builtin"
+builtin = "Gruvbox"
+
 [bar.default]
 position = "top"
 margin_ends = 0
@@ -39,3 +45,7 @@ keyboard_layout = false
 [lockscreen]
 enabled = true
 lock_before_suspend = false
+
+# лаунчер (Alt+D): плитка-сетка вместо списка, когда в выдаче только приложения
+[shell.launcher]
+app_grid = true

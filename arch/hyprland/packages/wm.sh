@@ -17,6 +17,9 @@ sudo pacman -S --needed --noconfirm \
 
 log "=== Копирование конфига Hyprland ==="
 mkdir -p ~/.config/hypr
+# Hyprland 0.56 при первом старте без конфига генерирует hyprland.lua-пример,
+# который потом затеняет hyprland.conf (SUPER-мод, kitty, без noctalia) — удаляем
+rm -f ~/.config/hypr/hyprland.lua
 cp "$REPO/wm/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf
 cp "$REPO/wm/hypr/fix-monitor.sh" ~/.config/hypr/fix-monitor.sh
 cp "$REPO/wm/hypr/fix-workspaces.sh" ~/.config/hypr/fix-workspaces.sh
