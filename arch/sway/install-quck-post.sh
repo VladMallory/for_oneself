@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+
+pacman -Sy --noconfirm curl git base-devel go
+
+BUILD_USER="${SUDO_USER:-$(logname 2>/dev/null)}"
+
+rm -rf /tmp/for_oneself
+git clone --depth 1 https://github.com/VladMallory/for_oneself.git /tmp/for_oneself
+
+if [ -n "$BUILD_USER" ]; then
+    chown -R "$BUILD_USER" /tmp/for_oneself
+
+    cd /tmp/for_oneself/arch/sway
+    sudo -u "$BUILD_USER" -H bash install.sh < /dev/tty
+else
+    cd /tmp/for_oneself/arch/sway
+    bash install.sh
+fi

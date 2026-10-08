@@ -11,9 +11,9 @@ git clone --depth 1 https://github.com/VladMallory/for_oneself.git /tmp/for_ones
 if [ -n "$BUILD_USER" ]; then
     chown -R "$BUILD_USER" /tmp/for_oneself
 
-    cd /tmp/for_oneself/arch
+    cd /tmp/for_oneself/arch/hyprland
     sudo -u "$BUILD_USER" -H bash install.sh < /dev/tty
 else
-    cd /tmp/for_oneself/arch
+    cd /tmp/for_oneself/arch/hyprland
     bash install.sh
 fi

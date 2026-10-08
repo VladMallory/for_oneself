@@ -1,0 +1,41 @@
+[bar.default]
+position = "top"
+margin_ends = 0
+margin_edge = 0
+margin_opposite_edge = 0
+# без «странных» закруглений на левом/правом концах
+radius = 0
+concave_edge_corners = false
+
+start  = ["wallpaper", "workspaces"]
+center = ["clock"]
+end    = ["tray", "tray-sep", "keyboard_layout", "battery"]
+
+[widget.wallpaper]
+custom_image = "/home/pc/Documents/wallpaper.jpg"
+
+[wallpaper]
+directory = "/home/pc/Pictures/Wallpapers"
+
+[widget.tray-sep]
+type = "text"
+text = "|"
+
+# имя SSID не показываем — только иконка сигнала
+[widget.network]
+show_label = false
+
+[location]
+auto_locate = false
+address = "Ussuriysk, Russia"
+
+[weather]
+enabled = true
+unit = "metric"
+
+[osd.kinds]
+keyboard_layout = false
+
+[lockscreen]
+enabled = true
+lock_before_suspend = false
