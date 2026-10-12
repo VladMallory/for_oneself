@@ -34,6 +34,9 @@ show_label = false
 [location]
 auto_locate = false
 address = "Ussuriysk, Russia"
+custom_schedule = true
+sunset = "20:00"
+sunrise = "07:00"
 
 [weather]
 enabled = true
@@ -49,3 +52,8 @@ lock_before_suspend = false
 # лаунчер (Alt+D): плитка-сетка вместо списка, когда в выдаче только приложения
 [shell.launcher]
 app_grid = true
+
+[nightlight]
+enabled = true
+temperature_day = 6500
+temperature_night = 3500
