@@ -2,4 +2,5 @@
 return {
   { import = "plugins.go.actions.go_run" },
   { import = "plugins.go.actions.terminate" },
+  { import = "plugins.go.actions.fill_struct" }
 }
