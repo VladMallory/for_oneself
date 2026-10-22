@@ -101,6 +101,26 @@ return {
     opts.filesystem.window.mappings = opts.filesystem.window.mappings or {}
     opts.filesystem.window.mappings["p"] = expand_git_dirs
     opts.filesystem.window.mappings["<C-p>"] = "paste_from_clipboard"
+
+    -- Направляющие «черточки» (indent guides): тонкие пунктирные линии
+    -- и уголок у последнего уровня вложенности.
+    opts.default_component_configs = opts.default_component_configs or {}
+    local indent = opts.default_component_configs.indent or {}
+    opts.default_component_configs.indent = indent
+    indent.with_markers = true
+    indent.indent_size = 2
+    indent.indent_marker = "╎"
+    indent.last_indent_marker = "╰" -- уголок у последнего элемента ветки
+
+    -- Плавающее окно по центру убрали — панель слева удобнее.
+    -- (если захочется вернуть: opts.window.position = "float" + opts.window.popup = {...})
+
+    -- Верхние табы источников (File/Bufs/Git) не нужны — прячем winbar совсем.
+    -- Сами источники остаются доступны: < и > переключают их, если понадобится.
+    opts.source_selector = opts.source_selector or {}
+    opts.source_selector.winbar = false
+    opts.source_selector.statusline = false
+
     return opts
   end,
 }
