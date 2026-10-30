@@ -2,6 +2,16 @@
 
 set -e
 
+# install.sh должен работать от обычного пользователя: от root ломаются
+# владельцы файлов в ~ и автологин ly.
+if [ "$(id -u)" -eq 0 ]; then
+    if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
+        exec sudo -u "$SUDO_USER" -H bash "$0" "$@"
+    fi
+    echo "ОШИБКА: запусти install.sh от обычного пользователя, не от root" >&2
+    exit 1
+fi
+
 DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$DIR/packages/common.sh"
 
