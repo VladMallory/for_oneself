@@ -46,9 +46,16 @@ parse_mib() {
 
 TOTAL_MIB=$(parse_mib "$SIZE_RAW")
 
+# --- swap size in GiB (задаётся в install-quck-live.sh, по умолчанию 20) ---
+SWAP_GB="${SWAP_GB:-20}"
+if ! [[ "$SWAP_GB" =~ ^[0-9]+$ ]] || [ "$SWAP_GB" -lt 1 ]; then
+    echo "ERROR: SWAP_GB должен быть целым числом >= 1 (ГБ), получено: '$SWAP_GB'" >&2
+    exit 1
+fi
+
 # --- partition sizes in MiB ---
 BOOT_MIB=1024
-SWAP_MIB=$((20 * 1024))
+SWAP_MIB=$((SWAP_GB * 1024))
 BOOT_START=1
 SWAP_START=$((BOOT_START + BOOT_MIB))
 ROOT_START=$((SWAP_START + SWAP_MIB))

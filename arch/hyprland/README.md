@@ -10,12 +10,14 @@ bash <(curl -fsSL https://raw.githubusercontent.com/VladMallory/for_oneself/main
 bash <(wget -qO- https://raw.githubusercontent.com/VladMallory/for_oneself/main/arch/hyprland/install-quck-live.sh)
 ```
 
+Скрипт спросит размер swap в ГБ (по умолчанию 20).
+
 ## Вручную
 ```bash
 pacman -Sy git
 git clone https://github.com/VladMallory/for_oneself.git
 cd for_oneself/arch/hyprland
-bash gen-config.sh
+SWAP_GB=20 bash gen-config.sh   # укажи нужный размер swap в ГБ
 archinstall --config archinstall-config.json --creds archinstall-creds.json
 ```
 
