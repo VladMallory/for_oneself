@@ -7,6 +7,12 @@ source "$DIR/packages/common.sh"
 
 source ~/.bashrc 2>/dev/null || true
 
+log "=== Настройка зеркал pacman (reflector) ==="
+sudo pacman -S --needed --noconfirm reflector
+sudo reflector --country Russia --latest 10 --protocol https --sort rate \
+    --save /etc/pacman.d/mirrorlist || log "ВНИМАНИЕ: reflector не смог обновить зеркала"
+sudo pacman -Syy --noconfirm || true
+
 log "=== Установка yay (AUR helper) ==="
 if ! command -v yay &> /dev/null; then
     cd /tmp

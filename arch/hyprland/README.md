@@ -10,7 +10,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/VladMallory/for_oneself/main
 bash <(wget -qO- https://raw.githubusercontent.com/VladMallory/for_oneself/main/arch/hyprland/install-quck-live.sh)
 ```
 
-Скрипт спросит размер swap в ГБ (по умолчанию 20).
+Скрипт спросит размер swap в ГБ (по умолчанию 20), затем через `reflector` выберет
+10 самых быстрых HTTPS-зеркал России и только после этого запустит `archinstall`.
 
 ## Вручную
 ```bash

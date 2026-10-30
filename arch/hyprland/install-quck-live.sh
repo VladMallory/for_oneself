@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
-pacman -Sy --noconfirm curl git
+pacman -Sy --noconfirm curl git reflector
+
+# --- лучшие зеркала перед установкой ---
+echo "=== Настройка зеркал pacman (reflector) ==="
+reflector --country Russia --latest 10 --protocol https --sort rate \
+    --save /etc/pacman.d/mirrorlist || echo "WARN: reflector не смог обновить зеркала"
+pacman -Syy --noconfirm || true
+
 git clone https://github.com/VladMallory/for_oneself.git /tmp/for_oneself
 cd /tmp/for_oneself/arch/hyprland
 
