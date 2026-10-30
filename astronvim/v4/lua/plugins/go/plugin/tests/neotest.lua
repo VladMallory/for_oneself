@@ -1,7 +1,7 @@
 -- Neotest с адаптером для Go.
 -- space+t+t — ближайший тест
 -- space+t+g — текущий файл
--- space+t+w — весь проект (окно summary сразу развёрнуто)
+-- space+t+w — отключено: тесты запускаются на space+9
 
 -- Собирает id всех папок/файлов и просит summary их раскрыть.
 -- neotest.summary.render() принимает таблицу id позиций, которые нужно
@@ -142,13 +142,15 @@ return {
         end,
         desc = "Run current Go test file",
       },
-      {
-        "<Leader>tw",
-        function()
-          run_all_expanded()
-        end,
-        desc = "Run all Go tests",
-      },
+      -- space+t+w отключено: тесты запускаются на space+9
+      -- (см. plugins/go/actions/go_test.lua).
+      -- {
+      --   "<Leader>tw",
+      --   function()
+      --     run_all_expanded()
+      --   end,
+      --   desc = "Run all Go tests",
+      -- },
     },
     config = function()
       local function float_open()

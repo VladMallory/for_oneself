@@ -2,7 +2,6 @@
 return {
   { import = "plugins.keymap.file" },
   { import = "plugins.keymap.lsp" },
-  { import = "plugins.keymap.supermaven" },
   { import = "plugins.keymap.selection" },
   { import = "plugins.keymap.closeTabs" },
 }
