@@ -19,10 +19,7 @@ return {
         "rust-analyzer",
         
         -- zig
-        -- zls ставится системно через Homebrew (brew install zls) и уже есть в PATH,
-        -- поэтому Mason его не трогаем. Если всё-таки нужен Mason — писать просто "zls":
-        -- версионных имён вида "zls@0.17.0" в реестре Mason больше нет.
-        -- "zls",
+        "zls",
       })
     end,
   },
