@@ -45,18 +45,17 @@ cat > ~/.config/hypr/is-normal.sh <<'EOF'
 EOF
 chmod +x ~/.config/hypr/is-eco.sh ~/.config/hypr/is-normal.sh
 
-log "=== Автозапуск hypridle в hyprland.conf ==="
-# wm.sh копирует hyprland.conf из репозитория (там строка уже есть),
+log "=== Проверка автозапуска hypridle в hyprland.lua ==="
+# В Hyprland 0.57+ конфиг — Lua. hypridle уже прописан в автозапуске репозитория,
 # это — страховка для случая, когда battery.sh запущен отдельно после wm.sh
-if [ -f ~/.config/hypr/hyprland.conf ]; then
-    if ! grep -q "^exec-once = hypridle" ~/.config/hypr/hyprland.conf; then
-        printf '%s\n' "exec-once = hypridle  # автосон через 10 мин простоя (см. hypridle.conf)" >> ~/.config/hypr/hyprland.conf
-        log "Строка автозапуска добавлена"
+if [ -f ~/.config/hypr/hyprland.lua ]; then
+    if grep -q 'hl.exec_cmd("hypridle")' ~/.config/hypr/hyprland.lua; then
+        log "hypridle уже в автозапуске, пропускаем"
     else
-        log "Строка автозапуска уже есть, пропускаем"
+        log "ВНИМАНИЕ: в hyprland.lua нет hl.exec_cmd(\"hypridle\") — добавь вручную"
     fi
 else
-    log "hyprland.conf пока нет (его положит wm.sh из репозитория, строка уже в исходнике)"
+    log "hyprland.lua пока нет (его положит wm.sh из репозитория)"
 fi
 
 log "Автосон настроен: 5 мин (power-saver) / 10 мин (обычно)"

@@ -17,15 +17,17 @@ sudo pacman -S --needed --noconfirm \
 
 log "=== Копирование конфига Hyprland ==="
 mkdir -p ~/.config/hypr
-# Hyprland 0.56 при первом старте без конфига генерирует hyprland.lua-пример,
-# который потом затеняет hyprland.conf (SUPER-мод, kitty, без noctalia) — удаляем
-rm -f ~/.config/hypr/hyprland.lua
-cp "$REPO/wm/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf
+# Hyprland 0.57+ читает только hyprland.lua; старый hyprland.conf игнорируется.
+# Существующий conf не удаляем без следа — сохраняем как .legacy-0.56.
+if [ -f ~/.config/hypr/hyprland.conf ] && [ ! -f ~/.config/hypr/hyprland.conf.legacy-0.56 ]; then
+    mv ~/.config/hypr/hyprland.conf ~/.config/hypr/hyprland.conf.legacy-0.56
+fi
+cp "$REPO/wm/hypr/hyprland.lua" ~/.config/hypr/hyprland.lua
 cp "$REPO/wm/hypr/fix-monitor.sh" ~/.config/hypr/fix-monitor.sh
 cp "$REPO/wm/hypr/fix-workspaces.sh" ~/.config/hypr/fix-workspaces.sh
 chmod +x ~/.config/hypr/fix-monitor.sh ~/.config/hypr/fix-workspaces.sh
 # подменяем захардкоженный /home/pc на домашний каталог текущего пользователя
-sed -i "s|/home/pc|$HOME|g" ~/.config/hypr/hyprland.conf
+sed -i "s|/home/pc|$HOME|g" ~/.config/hypr/hyprland.lua
 
 log "=== Копирование vol.sh (громкость с дебаунсом для Noctalia OSD) ==="
 mkdir -p ~/bin
