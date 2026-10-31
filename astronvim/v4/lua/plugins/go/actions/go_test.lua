@@ -36,9 +36,15 @@ local function go_test()
       local lines = { title, "" }
       local out = (res.stdout or "") .. (res.stderr or "")
       out = out:gsub("^%s*\n", ""):gsub("\n%s*$", "")
-      if out ~= "" then vim.list_extend(lines, vim.split(out, "\n", { plain = true })) end
-      lines[#lines + 1] = ""
-      lines[#lines + 1] = res.code == 0 and "[ok] exit 0" or ("[error] exit " .. tostring(res.code))
+      if res.code == 0 then
+        -- Успех: только код выхода.
+        lines[#lines + 1] = "exit=0"
+      else
+        -- Провал: показываем весь вывод целиком.
+        if out ~= "" then vim.list_extend(lines, vim.split(out, "\n", { plain = true })) end
+        lines[#lines + 1] = ""
+        lines[#lines + 1] = "exit=" .. tostring(res.code)
+      end
       set_lines(buf, lines)
     end)
   end)
