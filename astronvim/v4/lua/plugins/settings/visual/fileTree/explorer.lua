@@ -86,9 +86,17 @@ return {
     opts.filesystem = opts.filesystem or {}
     opts.filesystem.filtered_items = opts.filesystem.filtered_items or {}
     opts.filesystem.filtered_items.never_show = { ".DS_Store" }
-    -- Ширина боковой панели Neo-tree (Space + e). По умолчанию ~30, ставим побольше.
     opts.window = opts.window or {}
-    opts.window.width = 40
+    -- Плавающее окно по центру экрана (Space + e).
+    -- position = "float" включает плавающий режим, popup.position = "50%" центрирует,
+    -- popup.size задаёт размеры в процентах от экрана.
+    opts.window.position = "float"
+    opts.window.popup = opts.window.popup or {}
+    opts.window.popup.size = { height = "80%", width = "50%" }
+    opts.window.popup.position = "50%"
+    -- Ширина 40 нужна только боковой панели (position = "left"/"right"),
+    -- для плавающего окна не используется.
+    -- opts.window.width = 40
     -- Клавиши внутри проводника (Space + e):
     --   o — раскрыть все папки, z — свернуть все папки.
     -- Замечание: было o — меню "Order by" (oc, od, ...), теперь оно перекрыто.
@@ -112,8 +120,9 @@ return {
     indent.indent_marker = "╎"
     indent.last_indent_marker = "╰" -- уголок у последнего элемента ветки
 
-    -- Плавающее окно по центру убрали — панель слева удобнее.
-    -- (если захочется вернуть: opts.window.position = "float" + opts.window.popup = {...})
+    -- Раньше здесь стояла боковая панель слева (position = "left", width = 40).
+    -- Сейчас включено плавающее окно по центру — см. настройку выше.
+    -- (чтобы вернуть панель слева: opts.window.position = "left" + opts.window.width = 40)
 
     -- Верхние табы источников (File/Bufs/Git) не нужны — прячем winbar совсем.
     -- Сами источники остаются доступны: < и > переключают их, если понадобится.
