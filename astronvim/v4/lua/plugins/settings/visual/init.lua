@@ -6,4 +6,5 @@ return {
   { import = "plugins.settings.visual.stickyHeader" },
   { import = "plugins.settings.visual.themes" },
   { import = "plugins.settings.visual.panel" },
+  { import = "plugins.settings.visual.symbolReferences" },
 }

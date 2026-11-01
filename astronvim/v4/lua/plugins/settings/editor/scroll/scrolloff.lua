@@ -6,7 +6,7 @@ return {
   opts = {
     options = {
       opt = {
-        scrolloff = 10,
+        scrolloff = 5,
       },
     },
   },
