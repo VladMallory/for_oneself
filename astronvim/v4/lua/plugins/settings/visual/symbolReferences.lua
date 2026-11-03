@@ -25,9 +25,9 @@ return {
     }
 
     local function apply_colors()
-      vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#504945", bold = true })
-      vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "#33555a", bold = true })
-      vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "#6b3a2a", bold = true })
+      vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#458588", fg = "#f0fdfd", bold = true })
+      vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "#458588", fg = "#f0fdfd", bold = true })
+      vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "#458588", fg = "#f0fdfd", bold = true })
     end
 
     apply_colors()
