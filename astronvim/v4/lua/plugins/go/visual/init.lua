@@ -2,4 +2,5 @@
 return {
   { import = "plugins.go.visual.docHighlight" },
   { import = "plugins.go.visual.highlight" },
+  { import = "plugins.go.visual.indent" },
 }
